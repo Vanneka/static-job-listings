@@ -66,7 +66,7 @@ function fetchData() {
         </div>
         <!--    tech-stack section    -->
         </div>`
-
+        console.log(item)
         //ADDING THE FEATURED BORDER LINE
                 let jobCards = document.querySelectorAll('.job-card')
                 jobCards.forEach(jobCard => {
@@ -85,7 +85,6 @@ function fetchData() {
                     setStorage.add(filterCat.innerText)
                     filterSection.innerHTML = categoryLoop(setStorage)
                     bannerSection.style.display = 'flex';
-                    //                    console.log()
                 })
             });
 
@@ -93,11 +92,12 @@ function fetchData() {
             let bannerSection = document.querySelector('.the-filter')
             let filterSection = document.querySelector('.fil')
             let clrBtn = document.getElementById('clear-btn')
-            //bannerSection.innerHTML = "";
+
             // eventListeners
             clrBtn.addEventListener('click', () => {
                 bannerSection.style.display = "none";
                 setStorage.clear();
+
             })
         })
         .catch(
@@ -148,8 +148,11 @@ function categoryLoop(setItem) {
     section.setAttribute('class', 'filter')
     setItem.forEach((sItem) => {
         let p = document.createElement('p')
+        let i = document.createElement('i')
         p.setAttribute('class', 'tech')
+        i.setAttribute('class', 'fa fa-close')
         p.innerText = sItem;
+        p.appendChild(i)
         section.appendChild(p)
     })
     // will return the HTML of the item object
